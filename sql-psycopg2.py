@@ -1,0 +1,41 @@
+import psycopg2
+
+# connect to 'chinook' database
+connection = psycopg2.connect(database="chinook")
+
+# build a cursor object database
+cursor = connection.cursor()
+
+# Query 1 - select all records form "Artist" table
+# single quotes MUST wrap query
+# Double quotes MUST only be used to specify values
+# cursor.execute('SELECT * FROM "Artist"')
+
+# Query 2 - select only the "Name" column from "Artist" table
+# cursor.execute('SELECT "Name" FROM "Artist"')
+
+# Query 3 - Select only "Queen" from "Artist" table
+# %s - python string holder
+# cursor.execute('SELECT "Name" FROM "Artist" WHERE "Name" = %s', ["Queen"])
+
+# Query 4 -  select only by "ArtistId" #51 from "Artist" table
+# cursor.execute('SELECT * FROM "Artist" WHERE "ArtistId" = %s', [51])
+
+# Query 5 - select only the albums with "ArtistId" #51 on the "Album" table
+# cursor.execute('SELECT * FROM "Album" WHERE "ArtistId" = %s', [51])
+
+# Query 6 - select all tracks where the composer is "Queen" from the "Track" table
+cursor.execute('SELECT * FROM "Track" WHERE "Composer" = %s', ["Queen"])
+
+# fetch the results (multiple)
+results = cursor.fetchall()
+
+# fetch results (single)
+# results = cursor.fetchone()
+
+# close the connection
+connection.close()
+
+# print results
+for result in results:
+    print(result)
