@@ -82,13 +82,22 @@ tim_berners_lee = Programmer(
     famous_for="World Wide Web"
 )
 
+justin_brown = Programmer(
+    first_name="Justin",
+    last_name="Brown",
+    gender="M",
+    nationality="British",
+    famous_for="Student full stack developer"
+)
+
 # add each intance of programmers to our session
 # session.add(ada_lovelace)
-session.add(alan_turing)
-session.add(grace_hopper)
-session.add(margret_hamilton)
-session.add(bill_gates)
-session.add(tim_berners_lee)
+# session.add(alan_turing)
+# session.add(grace_hopper)
+# session.add(margret_hamilton)
+# session.add(bill_gates)
+# session.add(tim_berners_lee)
+session.add(justin_brown)
 
 # commit our session to the database
 session.commit()
