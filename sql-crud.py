@@ -100,12 +100,24 @@ justin_brown = Programmer(
 # session.add(justin_brown)
 
 
-# updating a single record
-programmer = session.query(Programmer).filter_by(id=7).first()
-programmer.famous_for = "World President"
+# updating a SINGLE record
+# programmer = session.query(Programmer).filter_by(id=7).first()
+# programmer.famous_for = "World President"
 
-# commit our session to the database
-session.commit()
+# # commit our session to the database
+# session.commit()
+
+
+# updating MULTIPLE records
+people = session.query(Programmer)
+for person in people:
+    if person.gender == "F":
+        person.gender = "Female"
+    elif person.gender == "M":
+        person.gender = "Male"
+    else:
+        print("Gender not defined")
+    session.commit()
 
 
 # query the database to find all Programmers
